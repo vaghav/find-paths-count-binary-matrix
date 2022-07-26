@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Main {
 
-    private int count = 0;
+    private static int count = 0;
 
     public static void main(String[] args) {
 
@@ -14,25 +14,19 @@ public class Main {
 
                 {1, 1, 1},
 
-                {1, 1, 1},
+                {1, 0, 1},
 
                 {1, 1, 1}
 
         };
-        new Main().findPaths(array);
-    }
-
-    private void findPaths(int[][] array) {
-        List<String> list = new ArrayList<>();
-        findPathsCount(array, 0, 0, list);
+        new Main().findPathsCount(array, 0, 0);
         System.out.println(count);
     }
 
-
-    private void findPathsCount(int[][] mat, int i, int j, List<String> list) {
+    private void findPathsCount(int[][] mat, int i, int j) {
         int m = mat.length - 1;
         int n = mat[0].length - 1;
-        //return if i or j crosses matrix size
+
         if (i > m || j > n) {
             return;
         }
@@ -42,12 +36,11 @@ public class Main {
         }
 
 
-        //list.add("[" + i + "," + j + "]");
         if (i == m && j == n) {
             this.count++;
         }
 
-        findPathsCount(mat, i + 1, j, list);
-        findPathsCount(mat, i, j + 1, list);
+        findPathsCount(mat, i + 1, j);
+        findPathsCount(mat, i, j + 1);
     }
 }
