@@ -34,8 +34,7 @@ public class Main {
         if (mat[i][j] != 1) {
             return;
         }
-
-
+        
         if (i == m && j == n) {
             this.count++;
         }
